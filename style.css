@@ -1,0 +1,49 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.grid-container{
+    display: grid;
+    background-color: #000000;
+    grid-template-columns: 30vh auto;
+    grid-template-rows: 11vh auto;
+    grid-template-areas: "sidebar header"
+    "sidebar main";
+    height: 100vh;
+}
+
+.sidebar{
+    grid-area: sidebar;
+    background-color: rgb(74, 1, 92);
+    display: flex;
+    color: beige;
+    justify-content: center;
+}
+
+.siedbar_header{
+padding-top: 1rem;
+}
+
+.siedbar_header hr{
+    background-color: bisque;
+}
+
+header {
+    grid-area: header;
+    background-color: rgb(70, 70, 70);
+    color: bisque;
+}
+
+.content {
+    padding: 10px;
+    color:bisque
+}
+
+table.table th {
+    color:bisque;
+}
+
+table.table td {
+    color:bisque;
+}
