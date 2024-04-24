@@ -12,7 +12,6 @@ function addNote(){
     const title = document.getElementById("note-title").value;
     const description = document.getElementById("note-description").value;
     const id = incrementCounter();
-    // const id = Math.random().toString(36).substring(7);
     const note = new Note(title, description, id);
     notes.push(note);
     saveNotesToLocalStorage();
