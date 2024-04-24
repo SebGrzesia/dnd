@@ -32,16 +32,11 @@ $('th').on('click', function () {
 function AddTableRowPlayer(name, initiative) {
     const row = document.createElement("tr");
 
-    const editButton = document.createElement("button");
-    editButton.textContent = "Edit";
-    editButton.classList.add("btn", "btn-primary", "btn-sm");
-
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "Delete";
     deleteButton.classList.add("btn", "btn-danger", "btn-sm");
 
     const buttonCell = document.createElement("td");
-    buttonCell.appendChild(editButton);
     buttonCell.appendChild(deleteButton);
     
     deleteButton.addEventListener('click', function() {
@@ -52,7 +47,7 @@ function AddTableRowPlayer(name, initiative) {
     row.innerHTML = `
       <td>${name}</td>
       <td>${initiative}</td>
-      <td></td>
+      <td contenteditable="true"></td>
     `;
 
     row.appendChild(buttonCell);
@@ -64,16 +59,11 @@ function AddTableRowMonster(name, hp)
     const initiativeMonster = Math.floor(Math.random() * 21);
     const row = document.createElement("tr");
 
-    const editButton = document.createElement("button");
-    editButton.textContent = "Edit";
-    editButton.classList.add("btn", "btn-primary", "btn-sm");
-
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "Delete";
     deleteButton.classList.add("btn", "btn-danger", "btn-sm");
 
     const buttonCell = document.createElement("td");
-    buttonCell.appendChild(editButton);
     buttonCell.appendChild(deleteButton);
 
     deleteButton.addEventListener('click', function() {
@@ -84,7 +74,7 @@ function AddTableRowMonster(name, hp)
     row.innerHTML = `
     <td>${name}</td>
     <td>${initiativeMonster}</td>
-    <td>${hp}</td>
+    <td contenteditable="true">${hp}</td>
     `;
 
     row.appendChild(buttonCell);
