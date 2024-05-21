@@ -36,6 +36,23 @@ function saveNote(id){
     clearForm();
 }
 
+function editNote(id) {
+    const note = notes.find((n) => n.id === id);
+    document.getElementById("note-title").value = note.title;
+    document.getElementById("note-description").value = note.description;
+    document.getElementById("saveButton").onclick = () => saveNote(id);
+}
+
+function deleteNote(id) {
+    const index = notes.findIndex((n) => n.id === id);
+    if(id !== -1){
+        notes.splice(index, 1);
+        saveNotesToLocalStorage();
+        displayNote();
+        clearForm();
+    }
+}
+
 function clearForm() {
     document.getElementById("note-title").value = "";
     document.getElementById("note-description").value = "";
@@ -49,7 +66,15 @@ function displayNote(){
         const li = document.createElement("li");
         li.className = "list-group-item";
         li.innerText = note.title;
-        //add edit on click
+        li.onclick = () => editNote(note.id);
+        const deleteButton = document.createElement("button");
+        deleteButton.className = "btn btn-danger btn-sm float-end ml-2";
+        deleteButton.innerText = "Usuń";
+        deleteButton.onclick = (event) => {
+            event.stopPropagation();
+            deleteNote(note.id);
+        };
+        li.appendChild(deleteButton);
         list.appendChild(li);
     }
 }
@@ -68,6 +93,10 @@ function loadNotes() {
 document.getElementById("note-form").addEventListener("submit", (e) => {
     e.preventDefault();
     addNote();
+});
+
+document.getElementById("clearButton").addEventListener("click", () => {
+    clearForm();
 });
 
 loadNotes();
